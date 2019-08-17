@@ -1,0 +1,68 @@
+doctype html
+head
+  // Latest compiled and minified CSS
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  // jQuery library
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  // Popper JS
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+  // Latest compiled JavaScript
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='https://code.jquery.com/jquery-1.11.1.js')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+table#myTable(cellpadding='10')
+  tr
+    th ID
+    th Name
+    th Class
+    th Contact
+    th Township
+    th Shift
+    th Time
+    th Address
+    th Status
+script.
+  var socket = io("http://172.20.10.2:2000/");
+  $(function () {
+  socket.on('mess', msg => {
+  console.log(msg);
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(1);
+  var cell0 = row.insertCell(0);
+  var cell1 = row.insertCell(1);
+  var cell2 = row.insertCell(2);
+  var cell3 = row.insertCell(3);
+  var cell4 = row.insertCell(4);
+  var cell5 = row.insertCell(5);
+  var cell6 = row.insertCell(6);
+  var cell7 = row.insertCell(7);
+  var cell8 = row.insertCell(8);
+  cell0.innerHTML = name;
+  });
+  })
+style.
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  }
+  table,
+  th,
+  td {
+  text-align: center;
+  }
+  th {
+  background-color: rgb(82, 178, 173);
+  }
+  th:first-of-type {
+  border-top-left-radius: 30px;
+  }
+  th:last-of-type {
+  border-top-right-radius: 30px;
+  }
+  tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 30px;
+  }
+  tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 30px;
+  }
